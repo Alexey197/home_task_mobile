@@ -147,18 +147,54 @@ const images = document.querySelectorAll('.img-12-min');
 let count = 0; // переменная, которая указывает на номер активного изображения в images
 
 const next = document.querySelectorAll('.next');
-next.onclick = nextFunction;
+next[0].onclick = nextFunction;
+next[0].ontouchstart = nextFunction;
 
 const prev = document.querySelectorAll('.prev');
-prev.onclick = prevFunction;
+prev[0].onclick = prevFunction;
+prev[0].ontouchstart = prevFunction;
+
+const reset = document.createElement('button');
+reset.classList.add('button-primary');
+reset.textContent = 'RESET';
+document.querySelector('.div-12-wrapper').append(reset);
 
 function nextFunction() {
-
+    images[count].classList.remove('active-img');
+    count++;
+    if (count === images.length) {
+        count = 0;
+        images[count].classList.add('active-img');
+    }
+    images[count].classList.add('active-img');
+    document.querySelector('.div-12-max img').src = `img/${count + 1}.png`;
 }
 
 function prevFunction() {
-
+    images[count].classList.remove('active-img');
+    if (count === 0) {
+        count = images.length;
+        images[count - 1].classList.add('active-img');
+    }
+    count--;
+    images[count].classList.add('active-img');
+    document.querySelector('.div-12-max img').src = `img/${count + 1}.png`;
 }
 
+function resetFunction() {
+    images.forEach((element) => element.classList.remove('active-img'));
+    images[0].classList.add('active-img');
+    count = 0;
+    document.querySelector('.div-12-max img').src = "img/1.png";
+}
 
+next[0].ontouchstart = (event) => {
+    event.preventDefault();
+    nextFunction();
+}
+prev[0].ontouchstart = (event) => {
+    event.preventDefault();
+    prevFunction();
+}
+reset.onclick = resetFunction;
 // ваше событие здесь!!!
