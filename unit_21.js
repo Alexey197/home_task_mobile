@@ -13,7 +13,6 @@ document.querySelector('.div-1').addEventListener('touchstart', t1);
 /* Создайте блок div-2. Добавьте на него событие touchstart. Выведите в out-2 число срабатываний события. */
 
 function t2(event) {
-    console.log(event);
     document.querySelector('.out-2').textContent = event.touches.length;
 }
 document.querySelector('.div-2').addEventListener('touchstart', t2);
@@ -24,29 +23,46 @@ document.querySelector('.div-2').addEventListener('touchstart', t2);
 // Task 3 ============================================
 /*  Создайте блок div-3_1 и div-3_2. Добавьте на них событие touchstart. Выведите в out-3 номер блока 1 или 2 на котором сработало событие. */
 
-function t3() {
-
+function t3(event) {
+    const out3 = document.querySelector('.out-3');
+    out3.textContent = event.target.textContent;
 }
 
+document.querySelector('.div-3_1').addEventListener('touchstart', t3);
+document.querySelector('.div-3_2').addEventListener('touchstart', t3);
 // ваше событие здесь!!!
 
 
 // Task 4 ============================================
 /*  Создайте блок div-4. И кнопку b-4. При нажатии кнопки - добавляйте событие ontouchstart на блок div-4. При событии происходит вывод текста touch в out-4.  */
 
+let div4 = document.querySelector('.div-4');
+let btn4 = document.createElement('button');
+btn4.classList.add('button-primary');
+btn4.classList.add('b-4');
+btn4.textContent = 'Task-4';
+div4.after(btn4);
+
 function t4() {
-
+    document.querySelector('.out-4').textContent += 'touch';
+    // div4.ontouchstart = function () {
+    //     document.querySelector('.out-4').textContent = 'touch';
+    // }
 }
-
+// div4.addEventListener('touchstart', t4);
+btn4.onclick = () => {
+    div4.addEventListener('touchstart', t4);
+};
 // ваше событие здесь!!!
 
 // Task 5 ============================================
 /*  Дана кнопка b-5. При ее нажатии очищайте событие ontouchstart на блоке div-4. */
 
 function t5() {
-
+    div4.removeEventListener('touchstart', t4);
 }
 
+document.querySelector('.b-5').onclick = t5;
 // ваше событие здесь!!!
 
 // Task 6 ============================================
