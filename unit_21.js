@@ -126,7 +126,7 @@ div10.addEventListener('touchmove', t10);
 
 function t11(event) {
     let out = '';
-    out = 'x:' + event.radiusX + ' y:' + event.radiusY;
+    out = event.touches[0].radiusX + ' ' + event.touches[0].radiusY;
     document.querySelector('.out-11').textContent = out;
 }
 
