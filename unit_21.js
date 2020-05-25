@@ -25,7 +25,8 @@ document.querySelector('.div-2').addEventListener('touchstart', t2);
 
 function t3(event) {
     const out3 = document.querySelector('.out-3');
-    out3.textContent = event.target.textContent;
+    if (event.target.textContent === '3-1') out3.textContent = '1';
+    if (event.target.textContent === '3-2') out3.textContent = '2';
 }
 
 document.querySelector('.div-3_1').addEventListener('touchstart', t3);
