@@ -14,9 +14,11 @@ document.querySelector('.div-1').onclick = t1;
 /* Создайте блок div-2. Добавьте на него событие ondblclick. При срабатывании события  выводите в out-2 количество срабатываний события. В комментариях опишите результат. */
 
 function t2() {
-
+    count++;
+    document.querySelector('.out-2').textContent = count;
 }
 
+document.querySelector('.div-2').ondblclick = t2;
 // ваше событие здесь!!!
 
 
